@@ -54,7 +54,6 @@ body {
 .content__section {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   width: 70%;
   margin-left: 40px;
 }
@@ -81,6 +80,7 @@ body {
   width: 300px;
   height: 450px;
   border-radius: 5px;
+  padding-top: 30px;
 }
 
 footer p {
@@ -110,6 +110,7 @@ footer p {
   }
   .content__section {
     flex-wrap: wrap;
+    align-items: center;
     flex-direction: column-reverse;
     width: 100%;
     margin-left: 0px;
@@ -168,6 +169,7 @@ footer p {
   .content__section {
     flex-wrap: wrap;
     flex-direction: column-reverse;
+    align-items: center;
     width: 100%;
     margin-left: 0px;
   }
@@ -223,6 +225,7 @@ footer p {
   }
   .content__section {
     flex-wrap: wrap;
+    align-items: center;
     flex-direction: column-reverse;
     width: 100%;
     margin-left: 0px;
