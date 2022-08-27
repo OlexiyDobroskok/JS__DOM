@@ -94,14 +94,14 @@ contentContainer.prepend(sidebar);
 sidebar.prepend(...addButtons());
 
 function addButtons() {
-  const buttonList = darkTowerSeries.map((serie, serieNumber) => {
-    const button = document.createElement("button");
-    button.className = "sidebar__button";
-    button.id = "dt" + serieNumber;
-    button.innerHTML = darkTowerSeries[serieNumber].title;
-    return button;
+  return darkTowerSeries.map((serie) => {
+    const { id, title } = serie;
+    const btn = document.createElement("button");
+    btn.classList.add("sidebar__button");
+    btn.id = id;
+    btn.innerText = title;
+    return btn;
   });
-  return buttonList;
 }
 
 const contentSection = document.createElement("section");
@@ -126,20 +126,22 @@ bookImage.className = "content__img";
 textContentContainer.after(bookImage);
 
 function contentCreator(eventBtn) {
-  const [serie] = darkTowerSeries.filter((serie) => eventBtn.id === serie.id);
-  contentTitle.innerHTML = serie.title;
-  paragraphQuote.innerHTML = serie.quote;
-  paragraph.innerHTML = serie.about;
-  bookImage.src = serie.photo;
-  bookImage.alt = serie.alt;
+  const contentData = darkTowerSeries.filter(
+    (serie) => eventBtn.id === serie.id
+  );
+  const [{ title, quote, about, photo, alt }] = contentData;
+  contentTitle.innerHTML = title;
+  paragraphQuote.innerHTML = quote;
+  paragraph.innerHTML = about;
+  bookImage.src = photo;
+  bookImage.alt = alt;
 }
 
-sidebar.addEventListener("click", function (event) {
-  const target = event.target;
+sidebar.addEventListener("click", function ({ target }) {
   if (target.closest(".sidebar__button")) {
     contentCreator(target);
   }
 });
 
 const aboutSeries = dt0;
-const frontPage = contentCreator(aboutSeries);
+contentCreator(aboutSeries);
